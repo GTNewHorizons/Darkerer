@@ -10,8 +10,8 @@ import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Share;
 import com.llamalad7.mixinextras.sugar.ref.LocalFloatRef;
 
-import glowredman.darkerer.Darkerer;
 import glowredman.darkerer.DarkererConfig;
+import glowredman.darkerer.DarkererCore;
 
 @Mixin(World.class)
 public class MixinWorld {
@@ -22,7 +22,7 @@ public class MixinWorld {
         method = "getSunBrightnessBody",
         remap = false)
     private float modifyMin(float original, @Share("min") LocalFloatRef min) {
-        if (!Darkerer.enabled) {
+        if (!DarkererCore.enabled) {
             return original;
         }
         switch (DarkererConfig.mode) {
@@ -41,7 +41,7 @@ public class MixinWorld {
         method = "getSunBrightnessBody",
         remap = false)
     private float modifyMax(float original, @Share("min") LocalFloatRef min) {
-        if (!Darkerer.enabled) {
+        if (!DarkererCore.enabled) {
             return original;
         }
         switch (DarkererConfig.mode) {

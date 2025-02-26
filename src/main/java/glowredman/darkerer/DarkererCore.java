@@ -12,7 +12,6 @@ import com.gtnewhorizon.gtnhmixins.IEarlyMixinLoader;
 
 import cpw.mods.fml.relauncher.FMLLaunchHandler;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
-import cpw.mods.fml.relauncher.IFMLLoadingPlugin.DependsOn;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.MCVersion;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.Name;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.TransformerExclusions;
@@ -20,15 +19,18 @@ import cpw.mods.fml.relauncher.Side;
 
 @TransformerExclusions("glowredman.darkerer.DarkererCore")
 @MCVersion("1.7.10")
-@Name("Darkerer Core")
-@DependsOn("GTNHLib Core")
+@Name("Darkerer")
 public class DarkererCore implements IFMLLoadingPlugin, IEarlyMixinLoader {
 
+    public static boolean enabled;
+
     static {
-        try {
-            ConfigurationManager.registerConfig(DarkererConfig.class);
-        } catch (ConfigException e) {
-            throw new RuntimeException(e);
+        if (FMLLaunchHandler.side() == Side.CLIENT) {
+            try {
+                ConfigurationManager.registerConfig(DarkererConfig.class);
+            } catch (ConfigException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 

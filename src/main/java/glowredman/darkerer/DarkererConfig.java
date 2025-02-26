@@ -2,7 +2,7 @@ package glowredman.darkerer;
 
 import com.gtnewhorizon.gtnhlib.config.Config;
 
-@Config(modid = Darkerer.MODID)
+@Config(modid = "darkerer")
 @Config.Sync
 public class DarkererConfig {
 
@@ -12,19 +12,19 @@ public class DarkererConfig {
 
     @Config.Comment("Whether or not the Nether should be dark")
     @Config.DefaultBoolean(true)
-    public static boolean nether;
+    public static boolean darkNether;
 
     @Config.Comment("Whether or not the End should be dark")
     @Config.DefaultBoolean(false)
-    public static boolean end;
+    public static boolean darkEnd;
 
     @Config.Comment("Whether or not the Twilight Forest should be dark")
     @Config.DefaultBoolean(false)
-    public static boolean twilightForest;
+    public static boolean darkTwilightForest;
 
     @Config.Comment("Attempts to remove the blue sky light that occurs when using mode NO_MIN_BLOCK_LIGHT or MOON_PHASE")
     @Config.DefaultBoolean(true)
-    public static boolean removeBlue;
+    public static boolean removeBlueSkyLight;
 
     @Config.Comment("A list of dimension ids in which Darkerer will be completely disabled")
     @Config.DefaultIntList({})

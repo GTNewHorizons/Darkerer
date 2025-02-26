@@ -14,8 +14,8 @@ import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.llamalad7.mixinextras.sugar.ref.LocalFloatRef;
 
-import glowredman.darkerer.Darkerer;
 import glowredman.darkerer.DarkererConfig;
+import glowredman.darkerer.DarkererCore;
 import glowredman.darkerer.Mode;
 
 @Mixin(EntityRenderer.class)
@@ -30,7 +30,7 @@ public class MixinEntityRenderer {
         expect = 9,
         method = "updateLightmap")
     private float modifyMin(float original) {
-        return Darkerer.enabled ? 0.0f : original;
+        return DarkererCore.enabled ? 0.0f : original;
     }
 
     @ModifyExpressionValue(
@@ -39,7 +39,7 @@ public class MixinEntityRenderer {
         expect = 9,
         method = "updateLightmap")
     private float modifyMax(float original) {
-        return Darkerer.enabled ? 1.0f : original;
+        return DarkererCore.enabled ? 1.0f : original;
     }
 
     @ModifyExpressionValue(
@@ -50,7 +50,7 @@ public class MixinEntityRenderer {
         expect = 1,
         method = "updateLightmap")
     private int darkenEnd(int original) {
-        return Darkerer.enabled && DarkererConfig.end ? 0 : original;
+        return DarkererCore.enabled && DarkererConfig.darkEnd ? 0 : original;
     }
 
     @Inject(
@@ -76,7 +76,8 @@ public class MixinEntityRenderer {
         expect = 1,
         method = "updateLightmap")
     private void modifyLightmap(CallbackInfo ci) {
-        if (!Darkerer.enabled || !DarkererConfig.removeBlue || DarkererConfig.mode == Mode.NO_MIN_SKY_OR_BLOCK_LIGHT) {
+        if (!DarkererCore.enabled || !DarkererConfig.removeBlueSkyLight
+            || DarkererConfig.mode == Mode.NO_MIN_SKY_OR_BLOCK_LIGHT) {
             return;
         }
         for (int i = 0; i < this.lightmapColors.length; i++) {
