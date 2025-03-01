@@ -2,7 +2,7 @@ package glowredman.darkerer;
 
 import com.gtnewhorizon.gtnhlib.config.Config;
 
-@Config(modid = "darkerer")
+@Config(modid = Darkerer.MODID)
 @Config.Sync
 public class DarkererConfig {
 
