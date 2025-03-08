@@ -76,18 +76,17 @@ public class MixinEntityRenderer {
         expect = 1,
         method = "updateLightmap")
     private void modifyLightmap(CallbackInfo ci) {
-        if (!DarkererCore.enabled || !DarkererConfig.removeBlueSkyLight
-            || DarkererConfig.mode == Mode.NO_MIN_SKY_OR_BLOCK_LIGHT) {
+        if (!DarkererCore.enabled || !DarkererConfig.removeBlueSkyLight || DarkererConfig.mode == Mode.EVERYWHERE) {
             return;
         }
         for (int i = 0; i < this.lightmapColors.length; i++) {
             int height = i / 16;
             if (height > 0 && height < 16) {
                 int red = (this.lightmapColors[i] >> 16) & 0xFF;
-                if (DarkererConfig.mode == Mode.NO_MIN_BLOCK_LIGHT) {
+                if (DarkererConfig.mode == Mode.ONLY_INSIDE) {
                     red = Math.min(0xFF, red + 25);
                 }
-                this.lightmapColors[i] = red << 16 | red << 8 | red;
+                this.lightmapColors[i] = this.lightmapColors[i] & 0xFF000000 | red << 16 | red << 8 | red;
             }
         }
     }

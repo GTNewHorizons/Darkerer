@@ -26,7 +26,7 @@ public class MixinWorld {
             return original;
         }
         switch (DarkererConfig.mode) {
-            case NO_MIN_SKY_OR_BLOCK_LIGHT:
+            case EVERYWHERE:
                 return 0.0f;
             case MOON_PHASE:
                 return min.get();
@@ -45,11 +45,11 @@ public class MixinWorld {
             return original;
         }
         switch (DarkererConfig.mode) {
-            case NO_MIN_SKY_OR_BLOCK_LIGHT:
+            case EVERYWHERE:
                 return 1.0f;
             case MOON_PHASE:
                 int phase = (int) (Minecraft.getMinecraft().theWorld.getCurrentMoonPhaseFactorBody() * 10.0f);
-                float max = 0.7f + (10 - phase) * 0.3f;
+                float max = 0.7f + (10 - phase) * 0.03f;
                 min.set(1.0f - max);
                 return max;
             default:

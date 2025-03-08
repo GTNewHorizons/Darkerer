@@ -6,8 +6,12 @@ import com.gtnewhorizon.gtnhlib.config.Config;
 @Config.Sync
 public class DarkererConfig {
 
-    @Config.Comment("How Darkerer should behave")
-    @Config.DefaultEnum("NO_MIN_SKY_OR_BLOCK_LIGHT")
+    @Config.Comment("""
+        How Darkerer should behave
+         EVERYWHERE: complete darkness at night, except near block light sources (torches, lava, etc.)
+         ONLY_INSIDE: a small amount of light remains at the surface, even during the night
+         MOON_PHASE: like ONLY_INSIDE but the remaining light depends on the moon phase""")
+    @Config.DefaultEnum("EVERYWHERE")
     public static Mode mode;
 
     @Config.Comment("Whether or not the Nether should be dark")
