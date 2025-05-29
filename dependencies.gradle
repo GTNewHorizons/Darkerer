@@ -1,5 +1,5 @@
 dependencies {
-    runtimeOnlyNonPublishable("com.github.GTNewHorizons:NotEnoughItems:2.7.4-GTNH:dev")
-    implementation("com.github.GTNewHorizons:GTNHLib:0.6.11:dev")
-    devOnlyNonPublishable("com.github.GTNewHorizons:twilightforest:2.7.5:dev")
+    runtimeOnlyNonPublishable("com.github.GTNewHorizons:NotEnoughItems:2.7.49-GTNH:dev")
+    implementation("com.github.GTNewHorizons:GTNHLib:0.6.25:dev")
+    devOnlyNonPublishable("com.github.GTNewHorizons:twilightforest:2.7.7:dev")
 }
