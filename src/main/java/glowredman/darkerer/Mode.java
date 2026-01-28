@@ -3,5 +3,6 @@ package glowredman.darkerer;
 public enum Mode {
     EVERYWHERE,
     ONLY_INSIDE,
-    MOON_PHASE;
+    MOON_PHASE,
+    DISABLED;
 }

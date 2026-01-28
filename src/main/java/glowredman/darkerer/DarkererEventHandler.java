@@ -22,7 +22,8 @@ public class DarkererEventHandler {
         }
         EntityPlayer player = FMLClientHandler.instance()
             .getClientPlayerEntity();
-        DarkererCore.enabled = player != null && !ArrayUtils.contains(DarkererConfig.dimBlocklist, player.dimension);
+        DarkererCore.enabled = player != null && !ArrayUtils.contains(DarkererConfig.dimBlocklist, player.dimension)
+            && DarkererConfig.mode != Mode.DISABLED;
     }
 
 }
