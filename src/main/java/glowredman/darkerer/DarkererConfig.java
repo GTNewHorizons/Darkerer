@@ -3,14 +3,14 @@ package glowredman.darkerer;
 import com.gtnewhorizon.gtnhlib.config.Config;
 
 @Config(modid = Darkerer.MODID)
-@Config.Sync
 public class DarkererConfig {
 
     @Config.Comment("""
         How Darkerer should behave
          EVERYWHERE: complete darkness at night, except near block light sources (torches, lava, etc.)
          ONLY_INSIDE: a small amount of light remains at the surface, even during the night
-         MOON_PHASE: like ONLY_INSIDE but the remaining light depends on the moon phase""")
+         MOON_PHASE: like ONLY_INSIDE but the remaining light depends on the moon phase
+         DISABLED: completely disabled like vanilla""")
     @Config.DefaultEnum("EVERYWHERE")
     public static Mode mode;
 
@@ -26,7 +26,7 @@ public class DarkererConfig {
     @Config.DefaultBoolean(false)
     public static boolean darkTwilightForest;
 
-    @Config.Comment("Attempts to remove the blue sky light that occurs when using mode NO_MIN_BLOCK_LIGHT or MOON_PHASE")
+    @Config.Comment("Attempts to remove the blue sky light that occurs when using mode EVERYWHERE or MOON_PHASE")
     @Config.DefaultBoolean(true)
     public static boolean removeBlueSkyLight;
 

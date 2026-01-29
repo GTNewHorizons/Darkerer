@@ -25,10 +25,12 @@ public class DarkererCore implements IFMLLoadingPlugin, IEarlyMixinLoader {
     public static boolean enabled;
 
     static {
-        try {
-            ConfigurationManager.registerConfig(DarkererConfig.class);
-        } catch (ConfigException e) {
-            throw new RuntimeException(e);
+        if (FMLLaunchHandler.side() == Side.CLIENT) {
+            try {
+                ConfigurationManager.registerConfig(DarkererConfig.class);
+            } catch (ConfigException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
