@@ -16,26 +16,21 @@ public class DarkererConfig {
 
     @Config.Comment("Whether or not the Nether should be dark")
     @Config.DefaultBoolean(true)
-    @Config.Sync
     public static boolean darkNether;
 
     @Config.Comment("Whether or not the End should be dark")
     @Config.DefaultBoolean(false)
-    @Config.Sync
     public static boolean darkEnd;
 
     @Config.Comment("Whether or not the Twilight Forest should be dark")
     @Config.DefaultBoolean(false)
-    @Config.Sync
     public static boolean darkTwilightForest;
 
     @Config.Comment("Attempts to remove the blue sky light that occurs when using mode EVERYWHERE or MOON_PHASE")
     @Config.DefaultBoolean(true)
-    @Config.Sync
     public static boolean removeBlueSkyLight;
 
     @Config.Comment("A list of dimension ids in which Darkerer will be completely disabled")
     @Config.DefaultIntList({})
-    @Config.Sync
     public static int[] dimBlocklist;
 }
